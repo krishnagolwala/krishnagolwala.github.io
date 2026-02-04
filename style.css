@@ -1,79 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap');
+
+:root {
+    --bg-color: #030a13;
+    --secondary-bg: #0a192f;
+    --accent-color: #64ffda;
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --text-white: #e6f1ff;
+    --card-bg: rgba(17, 34, 64, 0.7);
+    --border-color: rgba(100, 255, 218, 0.1);
+    --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background: #f9f9f9;
-    color: #222;
+    background: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-header {
-    text-align: center;
-    padding: 40px 20px;
-    background: #111;
-    color: #fff;
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-white);
 }
 
-header h1 {
-    font-size: 32px;
-}
-
-header p {
-    margin-top: 8px;
-    font-size: 16px;
-    color: #ccc;
-}
-
-.links {
-    margin-top: 15px;
-}
-
-.links a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #00adb5;
-    font-weight: bold;
+/* Layout */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 25px;
 }
 
 section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
+    padding: 80px 0;
 }
 
-h2 {
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ddd;
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(3, 10, 19, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Hero Section */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+header h1 {
+    font-size: clamp(40px, 8vw, 70px);
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-size: clamp(30px, 6vw, 50px);
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+header p {
+    max-width: 540px;
+    color: var(--text-secondary);
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.cta-button {
     display: inline-block;
+    padding: 18px 28px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition);
 }
 
-.skills ul {
-    list-style: square;
+.cta-button:hover {
+    background: rgba(100, 255, 218, 0.1);
+}
+
+/* Section Headings */
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    font-size: clamp(24px, 5vw, 32px);
+    white-space: nowrap;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 300px;
+    height: 1px;
+    background: var(--border-color);
     margin-left: 20px;
 }
 
-.project {
-    background: #fff;
-    padding: 20px;
+/* Skills Badges */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.skill-tag {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    transition: var(--transition);
+}
+
+.skill-tag:hover {
+    transform: translateY(-5px);
+    background: rgba(100, 255, 218, 0.05);
+}
+
+/* Projects Card */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+}
+
+.project-card h3 {
     margin-bottom: 15px;
-    border-radius: 5px;
+    font-size: 22px;
 }
 
-.project a {
-    display: inline-block;
-    margin-top: 8px;
+.project-card p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+}
+
+.project-links a {
+    color: var(--text-primary);
     text-decoration: none;
-    color: #0077cc;
+    font-size: 14px;
+    transition: var(--transition);
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #111;
-    color: #aaa;
-    margin-top: 40px;
+.project-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+header>* {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+header p:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+header h1 {
+    animation-delay: 0.2s;
+}
+
+header h2 {
+    animation-delay: 0.3s;
+}
+
+header p:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+header div {
+    animation-delay: 0.5s;
+}
+
+/* Apply to sections */
+section {
+    padding: 80px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
