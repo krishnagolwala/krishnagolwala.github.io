@@ -253,6 +253,14 @@ section {
     font-size: 32px;
 }
 
+.project-info p {
+    margin-top: 10px;
+    max-width: 520px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
 /* Footer CTA */
 .footer-cta {
     padding: 150px 0;
